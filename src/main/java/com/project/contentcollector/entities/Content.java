@@ -9,13 +9,14 @@ import javax.validation.constraints.NotNull;
 public class Content {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_sequence" )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "content_id_sequence" )
     private Long id;
 
     @NotNull(message = "name must have a value")
     private String name;
 
-    private String category;
+    @OneToOne
+    private Category category;
 
     @NotNull(message = "link must have a value")
     private String link;
@@ -23,7 +24,7 @@ public class Content {
     public Content() {
     }
 
-    public Content(String name, String category, String link) {
+    public Content(String name, Category category, String link) {
         this.name = name;
         this.category = category;
         this.link = link;
@@ -37,11 +38,11 @@ public class Content {
         this.name = name;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
