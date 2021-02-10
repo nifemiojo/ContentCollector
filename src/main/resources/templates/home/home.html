@@ -28,7 +28,7 @@
             <tbody>
                 <tr th:each="content : ${content}">
                     <td th:text="${content.name}"></td>
-                    <td th:text="${content.category}"></td>
+                    <td th:text="${content.category.name}"></td>
                     <td>
                         <a th:href="${content.link}" th:text="${content.link}"></a>
                     </td>

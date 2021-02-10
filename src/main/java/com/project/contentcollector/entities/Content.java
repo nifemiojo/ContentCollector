@@ -15,7 +15,8 @@ public class Content {
     @NotNull(message = "name must have a value")
     private String name;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
+                fetch=FetchType.LAZY)
     private Category category;
 
     @NotNull(message = "link must have a value")
