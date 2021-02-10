@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <head th:replace="layout :: header"></head>
+</head>
+
+    <nav th:replace="layout :: navbar"></nav>
+
+<body>
+
+    <div class="container">
+        <h4>My Content </h4>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Content Name</th>
+                    <th>Category</th>
+                    <th>Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="content : ${content}">
+                    <td th:text="${content.name}"></td>
+                    <td th:text="${content.category}"></td>
+                    <td>
+                        <a th:href="${content.link}" th:text="${content.link}"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
