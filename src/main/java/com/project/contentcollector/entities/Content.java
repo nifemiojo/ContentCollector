@@ -9,13 +9,14 @@ import javax.validation.constraints.NotNull;
 public class Content {
 
     @Id
+    @SequenceGenerator(name = "content_id_sequence", sequenceName = "content_id_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "content_id_sequence" )
     private Long id;
 
     @NotNull(message = "name must have a value")
     private String name;
 
-    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
+    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH},
                 fetch=FetchType.LAZY)
     private Category category;
 
@@ -25,9 +26,8 @@ public class Content {
     public Content() {
     }
 
-    public Content(String name, Category category, String link) {
+    public Content(String name, String link) {
         this.name = name;
-        this.category = category;
         this.link = link;
     }
 
