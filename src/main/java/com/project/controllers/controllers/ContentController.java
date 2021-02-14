@@ -1,17 +1,15 @@
-package com.project.contentcollector.controllers;
+package com.project.controllers.controllers;
 
-import com.project.contentcollector.dao.ICategoryRepository;
-import com.project.contentcollector.dao.IContentRepository;
-import com.project.contentcollector.entities.Category;
-import com.project.contentcollector.entities.Content;
+import com.project.controllers.dao.ICategoryRepository;
+import com.project.controllers.dao.IContentRepository;
+import com.project.controllers.entities.Category;
+import com.project.controllers.entities.Content;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package com.project.contentcollector.controllers;
+package com.project.controllers.controllers;
 
-import com.project.contentcollector.dao.IContentRepository;
-import com.project.contentcollector.entities.Content;
+import com.project.controllers.dao.IContentRepository;
+import com.project.controllers.entities.Content;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

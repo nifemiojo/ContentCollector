@@ -1,4 +1,4 @@
-package com.project.contentcollector.entities;
+package com.project.controllers.entities;
 
 import javax.persistence.*;
 

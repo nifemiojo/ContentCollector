@@ -1,14 +1,7 @@
-package com.project.contentcollector;
+package com.project.controllers;
 
-import com.project.contentcollector.dao.ICategoryRepository;
-import com.project.contentcollector.dao.IContentRepository;
-import com.project.contentcollector.entities.Category;
-import com.project.contentcollector.entities.Content;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class ContentcollectorApplication {

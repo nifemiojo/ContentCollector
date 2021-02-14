@@ -1,8 +1,8 @@
 package com.project.dao;
 
-import com.project.contentcollector.ContentcollectorApplication;
-import com.project.contentcollector.dao.IContentRepository;
-import com.project.contentcollector.entities.Content;
+import com.project.controllers.ContentcollectorApplication;
+import com.project.controllers.dao.IContentRepository;
+import com.project.controllers.entities.Content;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
-package com.project.contentcollector.dao;
+package com.project.controllers.dao;
 
-import com.project.contentcollector.entities.Category;
+import com.project.controllers.entities.Category;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
