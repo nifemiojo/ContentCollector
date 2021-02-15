@@ -1,11 +1,12 @@
-package com.project.controllers.entities;
+package com.project.entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "content")
-public class Content {
+public class Content implements Serializable {
 
     @Id
     @SequenceGenerator(name = "content_id_sequence", sequenceName = "content_id_sequence", allocationSize = 1)
@@ -17,6 +18,7 @@ public class Content {
 
     @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH},
                 fetch=FetchType.LAZY)
+    @JoinColumn(name = "category_name", referencedColumnName = "name")
     private Category category;
 
     @NotNull(message = "link must have a value")

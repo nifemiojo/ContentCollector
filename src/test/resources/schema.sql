@@ -16,6 +16,6 @@ CREATE TABLE IF NOT EXISTS content (
     id BIGINT NOT NULL DEFAULT nextval('content_id_sequence') PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     link VARCHAR(500) NOT NULL,
-    category_id BIGINT REFERENCES category
+    category_id BIGINT REFERENCES category ON DELETE SET NULL
 
     );

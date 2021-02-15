@@ -1,8 +1,7 @@
-package com.project.controllers.controllers;
+package com.project.controllers;
 
-import com.project.controllers.dao.ICategoryRepository;
-import com.project.controllers.entities.Category;
-import com.project.controllers.entities.Content;
+import com.project.dao.ICategoryRepository;
+import com.project.entities.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +20,9 @@ public class CategoryController {
 
     @Autowired
     ICategoryRepository categoryRepository;
+
+    @Autowired
+    ICategoryRepository contentRepository;
 
     @GetMapping("/edit")
     public String displayEditCategoryForm(Model model) {
@@ -33,7 +36,11 @@ public class CategoryController {
     }
 
     @PostMapping("/save")
-    public String createCategory(Category category, Model model) {
+    public String createCategory(Category category, Long id) {
+        if (id != null) {
+            category.setId(id);
+        }
+
         categoryRepository.save(category);
 
         return "redirect:/category/edit";
@@ -41,7 +48,7 @@ public class CategoryController {
 
     @GetMapping("/edit/edit/{id}")
     public String editContent(@PathVariable Long id, Model model) {
-        Optional<Category> category = categoryRepository.findById(id);
+        Category category = categoryRepository.findById(id).get();
         if(category != null) {
             model.addAttribute("category", category);
 

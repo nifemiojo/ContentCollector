@@ -1,7 +1,7 @@
-package com.project.controllers.controllers;
+package com.project.controllers;
 
-import com.project.controllers.dao.IContentRepository;
-import com.project.controllers.entities.Content;
+import com.project.dao.IContentRepository;
+import com.project.entities.Content;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -26,6 +26,7 @@ public class HomeController {
 
         // Returns all the content in the DB
         List<Content> content = contentRepository.findAll();
+
         model.addAttribute("content", content);
 
         return "home/home";

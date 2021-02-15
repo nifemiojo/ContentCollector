@@ -1,8 +1,7 @@
 package com.project.dao;
 
-import com.project.controllers.ContentcollectorApplication;
-import com.project.controllers.dao.IContentRepository;
-import com.project.controllers.entities.Content;
+import com.project.ContentcollectorApplication;
+import com.project.entities.Content;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.assertEquals;
 
 // Tells Spring where main app starts, if you use the same naming convention as proper app
-// e.g. java.com.project.contentcollector.ContentcollectorApplication then you can just use @SpringBootTest
+// e.g. java.com.project.contentcollector.com.project.ContentcollectorApplication then you can just use @SpringBootTest
 // By default maven will create this
 @ContextConfiguration(classes= ContentcollectorApplication.class)
 @DataJpaTest

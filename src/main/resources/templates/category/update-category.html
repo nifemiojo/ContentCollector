@@ -8,9 +8,11 @@
     <div class="container">
         <form action="/category/save" method="POST" th:object="${category}">
 
+            <input type="hidden" th:field="*{id}" th:value="*{id}">
+
             <input type="text" placeholder="Name" th:field="${category.name}">
 
-            <button type="submit">Update Project</button>
+            <button type="submit">Save Category</button>
 
         </form>
     </div>
