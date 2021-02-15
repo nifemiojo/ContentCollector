@@ -15,12 +15,12 @@ public class Category {
     public Category() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
     public Category(String name) {
         this.name = name;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {

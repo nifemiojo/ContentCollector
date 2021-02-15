@@ -22,9 +22,9 @@
             New Content
         </a>
 
-        <a th:href="@{/category/new}"
+        <a th:href="@{/category/edit}"
            class="btn btn-dark btn-sm mb-3">
-            New Category
+            Edit Categories
         </a>
 
         <table class="table table-bordered table-striped table-hover">
@@ -47,9 +47,9 @@
                     <td>
                         <a class="btn btn-dark btn-sm mb-3" th:href="@{/content/edit/} + ${content.id}">Edit</a>
                     </td>
-<!--                    <td>
+                    <td>
                         <a class="btn btn-dark btn-sm mb-3" th:href="@{/content/delete/} + ${content.id}">Delete</a>
-                    </td>-->
+                    </td>
 
                 </tr>
             </tbody>

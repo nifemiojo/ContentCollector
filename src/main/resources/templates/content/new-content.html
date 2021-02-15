@@ -11,6 +11,8 @@
     <div class="container">
         <form action="/content/save" method="POST" th:object="${content}">
 
+            <input type="hidden" th:field="*{id}" th:value="*{id}">
+
             <input type="text" placeholder="Name" th:field="${content.name}">
 
             <select th:field="${content.category}">
@@ -28,7 +30,7 @@
 
             <input type="text" placeholder="Link" th:field="${content.link}">
 
-            <button type="submit">Create Project</button>
+            <button type="submit">Save Content</button>
 
         </form>
     </div>

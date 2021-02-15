@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: header"></head>
+<nav th:replace="layout :: navbar"></nav>
+
+<body>
+
+    <div class="container">
+        <form action="/category/save" method="POST" th:object="${category}">
+
+            <input type="text" placeholder="Name" th:field="${category.name}">
+
+            <button type="submit">Update Project</button>
+
+        </form>
+    </div>
+
+</body>
+</html>

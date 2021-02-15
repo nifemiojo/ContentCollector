@@ -7,10 +7,7 @@ import com.project.controllers.entities.Content;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,21 +30,26 @@ public class ContentController {
         List<Category> categories = categoryRepository.findAll();
         model.addAttribute("content", content);
         model.addAttribute("categories", categories);
-        return"content/new-content";
+        return "content/new-content";
     }
 
     @PostMapping("/save")
-    public String createContent (Content content, Model model) {
+    public String createContent (@ModelAttribute Content content, Long id) {
+
+        if (id != null) {
+            content.setId(id);
+        }
+
         // Handles saving content to DB
         contentRepository.save(content);
 
         // Can use a redirect to prevent duplicate submissions - url redirect, redirects to controller
-        return "redirect:/content/new";
+        return "redirect:/";
     }
 
     @GetMapping("/edit/{id}")
     public String editContent(@PathVariable Long id, Model model) {
-        Optional<Content> content = contentRepository.findById(id);
+        Content content = contentRepository.findById(id).get();
         if(content != null) {
             model.addAttribute("content", content);
 
@@ -55,6 +57,15 @@ public class ContentController {
             model.addAttribute("categories", categories);
 
             return "content/new-content";
+        }
+        return "redirect:/";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteContent(@PathVariable Long id) {
+        Optional<Content> content = contentRepository.findById(id);
+        if(content != null) {
+            contentRepository.deleteById(id);
         }
         return "redirect:/";
     }
