@@ -1,9 +1,10 @@
 package com.project.controllers;
 
 import com.project.dao.ICategoryRepository;
-import com.project.dao.IContentRepository;
 import com.project.entities.Category;
 import com.project.entities.Content;
+import com.project.services.CategoryService;
+import com.project.services.ContentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,16 +19,16 @@ public class ContentController {
 
     @Autowired
     // Creates an instance of an anon class
-    IContentRepository contentRepository;
+    ContentService contentService;
 
     @Autowired
-    ICategoryRepository categoryRepository;
+    CategoryService categoryService;
 
     @GetMapping("/new")
     public String displayContentForm(Model model) {
         // Use model to bind HTML and Java code
         Content content = new Content();
-        List<Category> categories = categoryRepository.findAll();
+        List<Category> categories = categoryService.findAll();
         model.addAttribute("content", content);
         model.addAttribute("categories", categories);
         return "content/new-content";
@@ -41,7 +42,7 @@ public class ContentController {
         }
 
         // Handles saving content to DB
-        contentRepository.save(content);
+        contentService.save(content);
 
         // Can use a redirect to prevent duplicate submissions - url redirect, redirects to controller
         return "redirect:/";
@@ -49,11 +50,11 @@ public class ContentController {
 
     @GetMapping("/edit/{id}")
     public String editContent(@PathVariable Long id, Model model) {
-        Content content = contentRepository.findById(id).get();
+        Content content = contentService.findById(id).get();
         if(content != null) {
             model.addAttribute("content", content);
 
-            List<Category> categories = categoryRepository.findAll();
+            List<Category> categories = categoryService.findAll();
             model.addAttribute("categories", categories);
 
             return "content/new-content";
@@ -63,9 +64,9 @@ public class ContentController {
 
     @GetMapping("/delete/{id}")
     public String deleteContent(@PathVariable Long id) {
-        Optional<Content> content = contentRepository.findById(id);
+        Optional<Content> content = contentService.findById(id);
         if(content != null) {
-            contentRepository.deleteById(id);
+            contentService.deleteById(id);
         }
         return "redirect:/";
     }

@@ -2,6 +2,7 @@ package com.project.dao;
 
 import com.project.ContentcollectorApplication;
 import com.project.entities.Content;
+import com.project.services.ContentService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

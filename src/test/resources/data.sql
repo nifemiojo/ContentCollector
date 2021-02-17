@@ -10,5 +10,5 @@ insert into category (id, name) values (nextval('category_id_sequence'), 'SPORTS
 insert into category (id, name) values (nextval('category_id_sequence'), 'FUNNY');
 
 -- INSERT CATEGORY TO CONTENT
-update content set category_id = 2 where id = 1;
-update content set category_id = 3 where id = 2;
+update content set category_name = 'SPORTS' where id = 1;
+update content set category_name = 'BUSINESS' where id = 2;
