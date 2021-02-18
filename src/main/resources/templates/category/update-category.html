@@ -6,7 +6,7 @@
 <body>
 
     <div class="container">
-        <form action="/category/save" method="POST" th:object="${category}">
+        <form th:action="@{/category/save}" method="POST" th:object="${category}">
 
             <input type="hidden" th:field="*{id}" th:value="*{id}">
 

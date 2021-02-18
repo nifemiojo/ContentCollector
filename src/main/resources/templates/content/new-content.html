@@ -9,7 +9,7 @@
 <body>
 
     <div class="container">
-        <form action="/content/save" method="POST" th:object="${content}">
+        <form th:action="@{/content/save}" method="POST" th:object="${content}">
 
             <input type="hidden" th:field="*{id}" th:value="*{id}">
 
