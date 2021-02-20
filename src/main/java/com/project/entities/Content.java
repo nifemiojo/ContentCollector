@@ -3,6 +3,7 @@ package com.project.entities;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Optional;
 
 @Entity
 @Table(name = "content")
@@ -18,8 +19,12 @@ public class Content implements Serializable {
 
     @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH},
                 fetch=FetchType.LAZY)
-    @JoinColumn(name = "category_name", referencedColumnName = "name")
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
+
+    @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    private UserAccount user;
 
     @NotNull(message = "link must have a value")
     private String link;
@@ -62,5 +67,13 @@ public class Content implements Serializable {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public UserAccount getUser() {
+        return user;
+    }
+
+    public void setUser(UserAccount user) {
+        this.user = user;
     }
 }

@@ -1,6 +1,8 @@
 package com.project.dao;
 
+import com.project.entities.Category;
 import com.project.entities.Content;
+import com.project.entities.UserAccount;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -16,5 +18,12 @@ public interface IContentRepository extends CrudRepository<Content, Long> {
 
     @Override
     public List<Content> findAll();
+
+//    @Query(nativeQuery = true, value = "SELECT * FROM content WHERE username = :login")
+//    public List<Content> getAllUserContent(String login);
+
+    public List<Content> findContentsByUser(UserAccount user);
+
+    public void deleteContentById(Long id);
 
 }

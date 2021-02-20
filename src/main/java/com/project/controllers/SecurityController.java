@@ -32,6 +32,8 @@ public class SecurityController {
         user.setPassword(bCryptEncoder.encode(user.getPassword()));
         System.out.println(user.getUserName());
         accountService.save(user);
+
+        // TODO: Add 4 Initial Categories for the user
         return "redirect:/";
     }
 }

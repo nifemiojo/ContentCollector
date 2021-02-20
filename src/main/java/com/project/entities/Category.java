@@ -2,6 +2,8 @@ package com.project.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "category")
@@ -14,6 +16,11 @@ public class Category implements Serializable {
 
     @Column(name = "name")
     private String name;
+
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinTable(name="user_category", joinColumns = @JoinColumn(name = "category_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private List<UserAccount> userAccountList;
 
     public Category() {
     }
@@ -39,4 +46,14 @@ public class Category implements Serializable {
         this.name = name;
     }
 
+    public List<UserAccount> getUserAccountList() {
+        return userAccountList;
+    }
+
+    public void setUserAccountList(UserAccount userAccount) {
+        if(userAccountList==null) {
+            userAccountList = new ArrayList<>();
+        }
+        userAccountList.add(userAccount);
+    }
 }

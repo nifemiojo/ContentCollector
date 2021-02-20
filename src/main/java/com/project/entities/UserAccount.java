@@ -1,10 +1,12 @@
 package com.project.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "user_accounts")
-public class UserAccount {
+public class UserAccount implements Serializable {
 
     @Id
     @SequenceGenerator(name = "user_accounts_seq", sequenceName = "user_accounts_seq", allocationSize = 1)
@@ -19,6 +21,11 @@ public class UserAccount {
     private String password;
     private String role;
     private boolean enabled = true;
+
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH}, fetch=FetchType.LAZY)
+    @JoinTable(name="user_category", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private List<Category> categoryList;
 
     public UserAccount() {
 
@@ -72,4 +79,18 @@ public class UserAccount {
         this.enabled = enabled;
     }
 
+    public List<Category> getCategoryList() {
+        return categoryList;
+    }
+
+    public void setCategoryList(List<Category> categoryList) {
+        this.categoryList = categoryList;
+    }
+
+    @Override
+    public String toString() {
+        return "UserAccount{" +
+                "userName='" + userName + '\'' +
+                '}';
+    }
 }

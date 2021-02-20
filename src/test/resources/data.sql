@@ -12,3 +12,5 @@ insert into category (id, name) values (nextval('category_id_sequence'), 'FUNNY'
 -- INSERT CATEGORY TO CONTENT
 update content set category_name = 'SPORTS' where id = 1;
 update content set category_name = 'BUSINESS' where id = 2;
+
+insert into user_accounts (id, enabled, password, username) values (nextval('user_accounts_seq'), true, 'admin', 'admin');
