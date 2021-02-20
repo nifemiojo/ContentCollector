@@ -25,9 +25,12 @@ public class Category implements Serializable {
     public Category() {
     }
 
-    public Category(String name) {
+    public Category(String name, UserAccount user) {
         this.name = name;
+        this.userAccountList = new ArrayList<>();
+        this.userAccountList.add(user);
     }
+
 
     public Long getId() {
         return id;

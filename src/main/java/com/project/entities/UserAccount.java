@@ -22,7 +22,7 @@ public class UserAccount implements Serializable {
     private String role;
     private boolean enabled = true;
 
-    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH}, fetch=FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch=FetchType.LAZY)
     @JoinTable(name="user_category", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categoryList;
